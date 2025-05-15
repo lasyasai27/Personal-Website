@@ -1,0 +1,182 @@
+/* css/style.css */
+:root {
+  --bg: #fafafa;
+  --fg: #1a1a1a;
+  --accent: #5e60ce;
+  --card-bg: #ffffff;
+  --shadow: 0 6px 16px rgba(0,0,0,0.08);
+  --radius: 12px;
+  --transition: 0.4s cubic-bezier(.2,.8,.2,1);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(250,250,250,0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--fg);
+  position: relative;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.nav a:hover::after {
+  width: 100%;
+}
+.hero {
+  min-height: 40vh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 2rem 2rem;
+}
+.tagline {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  text-align: center;
+}
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  transition: transform var(--transition);
+  transform-style: preserve-3d;
+}
+.card:hover .card-inner {
+  transform: scale(1.03) rotateY(180deg);
+}
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backface-visibility: hidden;
+  padding: 1.2rem;
+  text-align: center;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.card-back a {
+  margin-top: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.skills li {
+  background: var(--card-bg);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 0.9rem;
+}
+.timeline {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+}
+.entry {
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+.entry::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -22px;
+  top: 6px;
+}
+.when {
+  font-size: 0.85rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+/* When JS toggles .flipped, apply the same transform as the hover state */
+.card-inner.flipped {
+  transform: scale(1.03) rotateY(180deg);
+  /* ensure the transition matches your hover rule */
+  transition: transform var(--transition);
+}
+/* Profile Photo */
+.profile-photo {
+  width: 140px;              /* or your preferred size */
+  height: 140px;
+  object-fit: cover;         /* crop/scale to fill */
+  border-radius: 50%;        /* circle */
+  border: 3px solid var(--accent);
+  margin-bottom: 1rem;       /* space under photo */
+  /* if you put it beside text: */
+  float: left;
+  margin-right: 1.5rem;
+}
+
+
