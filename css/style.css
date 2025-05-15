@@ -54,28 +54,33 @@ body {
 .nav a:hover::after {
   width: 100%;
 }
-.hero {
-  min-height: 40vh;
-  display: grid;
-  place-items: center;
-  padding: 4rem 2rem 2rem;
+/* About wrapper with photo */
+.about-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
 }
-.tagline {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  text-align: center;
+.about-text { flex: 1; }
+
+/* Profile Photo (rectangular) */
+.profile-photo {
+  width: 180px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
 }
+
+/* Generic section styling */
 .section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 4rem 2rem 3rem;
-  opacity: 0;
-  transform: translateY(40px);
+  max-width: 960px; margin: 0 auto; padding: 4rem 2rem 3rem;
+  opacity: 0; transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.section.visible { opacity: 1; transform: translateY(0); }
+.section h3 { font-size: 1.6rem; margin-bottom: 1.2rem; }
+
+/* Cards */
 .card-grid {
   display: grid;
   gap: 1.5rem;
